@@ -41,11 +41,17 @@ function RestaurantList(props) {
   //if restaurants are returned from the GraphQL query, run the filter query
   //and set equal to variable restaurantSearch
   if (loading) return <h1>Fetching</h1>;
-  if (data.restaurants.data && data.restaurants.data.length) {
+  const query = props.search;
+  console.log(`props are is ${JSON.stringify(props.search)}`);
+  const searchString = JSON.stringify(props.search);
+  console.log(`search string is ${searchString}`)
+ 
+  if (data.restaurants.data && data.restaurants.data.length && searchString) {
     //searchQuery
-    const searchQuery = data.restaurants.data.filter((query) => {
-      query.name.toLowerCase().includes(props.search)
+    const searchQuery = data.restaurants.data.filter((searchString) => {
+        searchString
   });
+  // console.log(data.restaurants.data.filter(searchString));
   //const searchQuery = `a ${props.search}`;
     if (searchQuery.length != 0) {
       return (
