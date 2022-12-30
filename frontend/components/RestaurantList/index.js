@@ -32,7 +32,7 @@ const QUERY = gql`
         
       }    
     }
-  }
+  } 
 `;
 
 function RestaurantList(props) {
@@ -41,11 +41,12 @@ function RestaurantList(props) {
   //if restaurants are returned from the GraphQL query, run the filter query
   //and set equal to variable restaurantSearch
   if (loading) return <h1>Fetching</h1>;
-  if (data.restaurants && data.restaurants.length) {
+  if (data.restaurants.data && data.restaurants.data.length) {
     //searchQuery
-    const searchQuery = data.restaurants.filter((query) =>
+    const searchQuery = data.restaurants.data.filter((query) => {
       query.name.toLowerCase().includes(props.search)
-    );
+  });
+  //const searchQuery = `a ${props.search}`;
     if (searchQuery.length != 0) {
       return (
         <Row>
