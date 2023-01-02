@@ -15,24 +15,16 @@ import {
 } from "reactstrap";
 
 const QUERY = gql`
-{
-    restaurants{
-      data{
-        id
-        attributes{
-          name
-          image{
-            data{
-              attributes{
-                url
-              }
-            }
-          }
-        }
-        
-      }    
+  {
+    restaurants {
+      id
+      name
+      description
+      image {
+        url
+      }
     }
-  } 
+  }
 `;
 
 function RestaurantList(props) {
@@ -41,18 +33,11 @@ function RestaurantList(props) {
   //if restaurants are returned from the GraphQL query, run the filter query
   //and set equal to variable restaurantSearch
   if (loading) return <h1>Fetching</h1>;
-  const query = props.search;
-  console.log(`props are is ${JSON.stringify(props.search)}`);
-  const searchString = JSON.stringify(props.search);
-  console.log(`search string is ${searchString}`)
- 
-  if (data.restaurants.data && data.restaurants.data.length && searchString) {
+  if (data.restaurants && data.restaurants.length) {
     //searchQuery
-    const searchQuery = data.restaurants.data.filter((searchString) => {
-        searchString
-  });
-  // console.log(data.restaurants.data.filter(searchString));
-  //const searchQuery = `a ${props.search}`;
+    const searchQuery = data.restaurants.filter((query) =>
+      query.name.toLowerCase().includes(props.search)
+    );
     if (searchQuery.length != 0) {
       return (
         <Row>
@@ -62,7 +47,8 @@ function RestaurantList(props) {
                 <CardImg
                   top={true}
                   style={{ height: 250 }}
-                  src={`${process.env.NEXT_PUBLIC_API_URL}${res.image[0].url}`}
+                 // src={`${process.env.NEXT_PUBLIC_API_URL}${res.image[0].url}`}
+                 src={`${process.env.NEXT_PUBLIC_API_URL}${res.image.url}`}
                 />
                 <CardBody>
                   <CardTitle>{res.name}</CardTitle>

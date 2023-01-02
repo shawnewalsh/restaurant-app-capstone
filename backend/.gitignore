@@ -95,6 +95,7 @@ results
 node_modules
 .node_history
 
+
 ############################
 # Tests
 ############################
@@ -106,10 +107,6 @@ coverage
 # Strapi
 ############################
 
-.env
-license.txt
 exports
-*.cache
-dist
+.cache
 build
-.strapi-updater.json

@@ -9,22 +9,28 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
+  "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.5.5",
-    "@strapi/plugin-i18n": "4.5.5",
-    "@strapi/plugin-users-permissions": "4.5.5",
-    "@strapi/strapi": "4.5.5",
-    "pg": "8.6.0",
-    "strapi-plugin-graphql": "^3.0.0-beta.20.3"
+    "strapi": "3.0.0-beta.20.1",
+    "strapi-admin": "3.0.0-beta.20.1",
+    "strapi-connector-mongoose": "3.0.0-beta.20.1",
+    "strapi-plugin-content-manager": "3.0.0-beta.20.1",
+    "strapi-plugin-content-type-builder": "3.0.0-beta.20.1",
+    "strapi-plugin-email": "3.0.0-beta.20.1",
+    "strapi-plugin-graphql": "^3.0.0-beta.20.1",
+    "strapi-plugin-upload": "3.0.0-beta.20.1",
+    "strapi-plugin-users-permissions": "3.0.0-beta.20.1",
+    "strapi-utils": "3.0.0-beta.20.1",
+    "stripe": "^11.5.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "03aa0723-011a-4fec-b3fc-5f4635fd5578"
+    "uuid": "1aeac669-76e4-4a63-b9db-65442a3265e0"
   },
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=10.0.0",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

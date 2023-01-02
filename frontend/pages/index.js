@@ -19,7 +19,6 @@ function Home() {
               />
             </InputGroup>
           </div>
-
           <RestaurantList search={query} />
         </Col>
       </Row>
