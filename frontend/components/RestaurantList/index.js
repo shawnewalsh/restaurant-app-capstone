@@ -15,16 +15,15 @@ import {
 } from "reactstrap";
 
 const QUERY = gql`
-  {
-    restaurants {
-      id
-      name
-      description
-      image {
-        url
-      }
+{
+  orders {
+    amount
+    dishes
+    user {
+      username
     }
   }
+}
 `;
 
 function RestaurantList(props) {
