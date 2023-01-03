@@ -42,6 +42,8 @@ function CheckoutForm() {
     // get token back from stripe to process credit card
     const token = await stripe.createToken(cardElement);
     const userToken = Cookies.get("token");
+    console.log(`username from user context is ${JSON.stringify(appContext.user.username)}`);
+    const customer = JSON.stringify(appContext.user.username);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
       method: "POST",
       headers: userToken && { Authorization: `Bearer ${userToken}` },
@@ -52,13 +54,18 @@ function CheckoutForm() {
         city: data.city,
         state: data.state,
         token: token.token.id,
+        user: customer,
       }),
     });
-    const result = await response.json();
+
+    if (response.ok) {
+      setError(`Payment Successful.`);
+        console.log(`Payment Successful.`);
+    }
 
     if (!response.ok) {
-      setError(response.statusText);
-        console.log(`response ${JSON.stringify(response.message)}`);
+      setError(`Payment declined: please contact your financial institution.`);
+        console.log(`Payment declined: please contact your financial institution.`);
     }
 
     // OTHER stripe methods you can use depending on app

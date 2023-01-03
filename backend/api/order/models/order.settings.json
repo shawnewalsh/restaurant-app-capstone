@@ -20,6 +20,11 @@
     },
     "amount": {
       "type": "biginteger"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "orders"
     }
   }
 }

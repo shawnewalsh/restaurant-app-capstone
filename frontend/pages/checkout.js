@@ -15,9 +15,11 @@ function Checkout() {
   const appContext = useContext(AppContext);
   // isAuthenticated is passed to the cart component to display order button
   const { isAuthenticated } = appContext;
+  const { username } = appContext;
 
   // load stripe to inject into elements components
   const stripePromise = loadStripe("pk_test_51MDz68Dc1CPjDpJ78iJXbxGaZmEqvKz4WG6h9LPUXmVDOFSEHEHdeGpSFJP76SUwTfDPNU7uRJVER3AQ5Sq3N16W00XTa69eOS");
+  // console.log(`appcontext is ${JSON.stringify(appContext.user.username)}`);
 
   return (
     <Row>
