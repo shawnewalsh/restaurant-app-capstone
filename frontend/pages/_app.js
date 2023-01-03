@@ -6,6 +6,7 @@ import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import Layout from "../components/Layout";
 import AppContext from "../context/AppContext";
+
 import withData from "../lib/apollo";
 class MyApp extends App {
   state = {
