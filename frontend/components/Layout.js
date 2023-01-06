@@ -53,6 +53,15 @@ const Layout = (props) => {
               </Link>
             )}
           </NavItem>
+          <NavItem className="ml-auto">
+            {user ? (
+              <Link href="/orders">
+                <a className="nav-link">Previous Orders</a>
+              </Link>
+            ) : (
+             <h5>Please login</h5>
+            )}
+          </NavItem>
           <NavItem>
             {user ? (
               <Link href="/">
