@@ -70,6 +70,7 @@ function CheckoutForm() {
     if (!response.ok) {
       setError(`Payment declined: please contact your financial institution.`);
         console.log(`Payment declined: please contact your financial institution.`);
+        addToast('Payment declined: please contact your financial institution.', { appearance: 'error' });
     }
 
     // OTHER stripe methods you can use depending on app
