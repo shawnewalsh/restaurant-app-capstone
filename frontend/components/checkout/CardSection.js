@@ -22,7 +22,7 @@ function CardSection(props) {
               </div>
               <br />
               <div className="order-button-wrapper">
-                <button onClick={props.submitOrder}>Confirm order</button>
+                <button id="submitOrder" onClick={props.submitOrder}>Confirm order</button>
               </div>
               {props.stripeError ? (
                 <div>{props.stripeError.toString()}</div>

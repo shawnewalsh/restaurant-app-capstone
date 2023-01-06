@@ -56,6 +56,10 @@
     "orders": {
       "via": "user",
       "collection": "order"
+    },
+    "user_profile": {
+      "via": "user",
+      "model": "user-profile"
     }
   }
 }

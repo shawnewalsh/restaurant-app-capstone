@@ -6,6 +6,7 @@ import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import Layout from "../components/Layout";
 import AppContext from "../context/AppContext";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 
 import withData from "../lib/apollo";
@@ -122,6 +123,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
+      <ToastProvider>
       <AppContext.Provider
         value={{
           user: this.state.user,
@@ -145,6 +147,7 @@ class MyApp extends App {
           <Component {...pageProps} />
         </Layout>
       </AppContext.Provider>
+      </ToastProvider>
     );
   }
 }

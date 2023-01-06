@@ -16,7 +16,6 @@ function Orders() {
     return (
      
         <div>
-        <h1>orders</h1>
         <OrderList search={userquery}/>
         </div>
      

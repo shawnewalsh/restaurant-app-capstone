@@ -1,7 +1,7 @@
 /* /components/Checkout/CheckoutForm.js */
 
 import React, { useState, useContext } from "react";
-
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 import { FormGroup, Label, Input } from "reactstrap";
 
 import fetch from "isomorphic-fetch";
@@ -13,6 +13,7 @@ import AppContext from "../../context/AppContext";
 
 
 function CheckoutForm() {
+  const { addToast } = useToasts();
   const [data, setData] = useState({
     address: "",
     city: "",
@@ -61,6 +62,9 @@ function CheckoutForm() {
     if (response.ok) {
       setError(`Payment Successful.`);
         console.log(`Payment Successful.`);
+        addToast('Payment Successful', { appearance: 'success' });
+        document.getElementById("submitOrder").disabled = true;
+        document.getElementById("submitOrder").style.backgroundColor = 'gray';
     }
 
     if (!response.ok) {

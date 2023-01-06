@@ -1,6 +1,7 @@
 /* /pages/register.js */
 
 import React, { useState, useContext } from "react";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 import {
   Container,
@@ -20,6 +21,8 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
   const appContext = useContext(AppContext);
+  const { addToast } = useToasts();
+
   return (
     <Container>
       <Row>
@@ -99,6 +102,7 @@ const Register = () => {
                             // set authed user in global context object
                             appContext.setUser(res.data.user);
                             setLoading(false);
+                            addToast('Registered Successfully', { appearance: 'success' });
                           })
                           .catch((error) => {
                             setError(error.response.data);

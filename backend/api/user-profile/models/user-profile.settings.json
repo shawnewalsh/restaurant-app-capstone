@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_profiles",
+  "info": {
+    "name": "User Profile"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "integer"
+    },
+    "phone": {
+      "type": "integer",
+      "required": false,
+      "default": 0
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "user_profile"
+    }
+  }
+}

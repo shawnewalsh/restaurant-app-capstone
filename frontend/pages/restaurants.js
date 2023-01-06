@@ -1,14 +1,18 @@
 /* /pages/restaurants.js */
+import React, { useState } from "react";
 import { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import { gql } from "apollo-boost";
-
+import RestaurantList from "../components/RestaurantList";
 
 import Cart from "../components/cart/";
 import AppContext from "../context/AppContext";
 
 import {
+  Input, 
+  InputGroup, 
+  InputGroupAddon,
   Button,
   Card,
   CardBody,
@@ -38,6 +42,8 @@ const GET_RESTAURANT_DISHES = gql`
 `;
 
 function Restaurants() {
+  const [query, updateQuery] = useState("");
+
   const appContext = useContext(AppContext);
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_RESTAURANT_DISHES, {
@@ -51,8 +57,21 @@ function Restaurants() {
     return (
       <>
         <h1>{restaurant.name}</h1>
+        <div className="container-fluid">
+        <Col>
+          <div className="search">
+            <InputGroup>
+              <InputGroupAddon addonType="append"> Search </InputGroupAddon>
+              <Input
+                onChange={e => updateQuery(e.target.value.toLocaleLowerCase())}
+                value={query}
+              />
+            </InputGroup>
+          </div>
+        </Col><br></br><br></br>
         <Row>
-          {restaurant.dishes.map((res) => (
+
+          {restaurant.dishes.filter(res => res.name.includes(query)).map((res) => (
             <Col xs="6" sm="4" style={{ padding: 0 }} key={res.id}>
               <Card style={{ margin: "0 10px" }}>
                 <CardImg
@@ -91,6 +110,11 @@ function Restaurants() {
                       a:hover {
                         color: white !important;
                       }
+                      {
+                      .search {
+                        margin: 20px;
+                        width: 500px;
+                      }
                     `}
                   </style>
                 </div>
@@ -103,6 +127,8 @@ function Restaurants() {
             </div>
           </Col>
         </Row>
+        
+        </div>
       </>
     );
   }

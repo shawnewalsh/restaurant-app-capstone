@@ -48,20 +48,17 @@ import {
 
     console.log(`user orders is ${JSON.stringify(userOrders)}`)
     return (
-      <><h1>hello there {props.search}</h1><Row>
+      <><h1>Previous Orders</h1><Row>
         {userOrders.map((ord) => (
           <Col xs="6" sm="4" style={{ padding: 0 }} key={ord.id}>
             <Card style={{ margin: "0 10px" }}>
               <CardBody>
-                <CardTitle>{ord.createdAt}</CardTitle>
-                <CardText>{ord.user.username}</CardText>
-
-                <CardText>{ord.dishes[0].name}</CardText>
+                <CardTitle>{ord.createdAt.replace(/T/g, " ").slice(0,16)}</CardTitle>
+                <CardText>Dishes</CardText>
+                {ord.dishes.map(d => (<li key={d.name}>&emsp;{d.name}:&emsp;{d.quantity}&emsp;x&emsp;{d.price.toPrecision(4)}</li>))  }
               </CardBody>
 
-
-
-              <div className="card-footer">
+              <div className="card-footer ml-auto"  >
                 <style jsx>
                   {`
                       a {
