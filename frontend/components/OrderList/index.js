@@ -29,7 +29,16 @@ import {
   `;
 
 
-
+  function sortByProperty(property){  
+    return function(a,b){  
+       if(a[property] < b[property])  
+          return 1;  
+       else if(a[property] > b[property])  
+          return -1;  
+   
+       return 0;  
+    }  
+ }
 
 
   function OrderList(props) {
@@ -42,6 +51,8 @@ import {
     if (data.orders && data.orders.length) {
         console.log(`Here is your order ${JSON.stringify(data.orders)}`);
     }
+    data.orders.sort(sortByProperty("createdAt"));
+
     const userOrders = data.orders.filter(order => {
       return order.user.username.includes(props.search);
     })
@@ -55,7 +66,7 @@ import {
               <CardBody>
                 <CardTitle>{ord.createdAt.replace(/T/g, " ").slice(0,16)}</CardTitle>
                 <CardText>Dishes</CardText>
-                {ord.dishes.map(d => (<li key={d.name}>&emsp;{d.name}:&emsp;{d.quantity}&emsp;x&emsp;{d.price.toPrecision(4)}</li>))  }
+                {ord.dishes.map(d => (<li key={d.name}>&emsp;{d.name}:&emsp;{d.quantity}&emsp;x&emsp;{d.price.toFixed(2)}</li>))  }
               </CardBody>
 
               <div className="card-footer ml-auto"  >
@@ -78,7 +89,7 @@ import {
                         color: white !important;
                       }
                     `}
-                </style>${(ord.amount / 100).toPrecision(4)}
+                </style>${(ord.amount / 100).toFixed(2)}
               </div>
             </Card>
             <br></br>

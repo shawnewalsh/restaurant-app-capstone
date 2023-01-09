@@ -8,7 +8,6 @@ import Layout from "../components/Layout";
 import AppContext from "../context/AppContext";
 import { ToastProvider, useToasts } from 'react-toast-notifications';
 
-
 import withData from "../lib/apollo";
 class MyApp extends App {
   state = {
@@ -123,6 +122,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
+
       <ToastProvider>
       <AppContext.Provider
         value={{
@@ -141,6 +141,7 @@ class MyApp extends App {
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossOrigin="anonymous"
           />
+          <title>Welcome to Frisco Eats</title>
         </Head>
 
         <Layout>
@@ -148,6 +149,7 @@ class MyApp extends App {
         </Layout>
       </AppContext.Provider>
       </ToastProvider>
+
     );
   }
 }

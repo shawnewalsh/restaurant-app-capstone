@@ -24,6 +24,7 @@ function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
   const appContext = useContext(AppContext);
+  const { cart } = appContext;
 
   function onChange(e) {
     // set the key = to the name property equal to the value typed
@@ -59,18 +60,27 @@ function CheckoutForm() {
       }),
     });
 
+    console.log(`cart app context is ${JSON.stringify(cart)}`);    
+   
+    
+    
     if (response.ok) {
       setError(`Payment Successful.`);
         console.log(`Payment Successful.`);
         addToast('Payment Successful', { appearance: 'success' });
         document.getElementById("submitOrder").disabled = true;
         document.getElementById("submitOrder").style.backgroundColor = 'gray';
+        appContext.cart.items = [];
+        appContext.cart.total = 0;
+        console.log(`cart app context after checkout is ${JSON.stringify(appContext.cart)}`);  
+        
     }
 
     if (!response.ok) {
       setError(`Payment declined: please contact your financial institution.`);
         console.log(`Payment declined: please contact your financial institution.`);
         addToast('Payment declined: please contact your financial institution.', { appearance: 'error' });
+     
     }
 
     // OTHER stripe methods you can use depending on app

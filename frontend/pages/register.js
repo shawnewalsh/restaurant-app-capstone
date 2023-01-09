@@ -16,6 +16,7 @@ import {
 import { registerUser } from "../lib/auth";
 import AppContext from "../context/AppContext";
 
+
 const Register = () => {
   const [data, setData] = useState({ email: "", username: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -64,9 +65,11 @@ const Register = () => {
                   <FormGroup>
                     <Label>Email:</Label>
                     <Input
-                      onChange={(e) =>
+                      onChange={(e) => {
+                        
                         setData({ ...data, email: e.target.value })
-                      }
+                      }}
+
                       value={data.email}
                       type="email"
                       name="email"

@@ -1,3 +1,4 @@
+
 /* /pages/restaurants.js */
 import React, { useState } from "react";
 import { useContext } from "react";
@@ -71,17 +72,17 @@ function Restaurants() {
         </Col><br></br><br></br>
         <Row>
 
-          {restaurant.dishes.filter(res => res.name.includes(query)).map((res) => (
-            <Col xs="6" sm="4" style={{ padding: 0 }} key={res.id}>
-              <Card style={{ margin: "0 10px" }}>
+          {restaurant.dishes.filter(res => res.name.toLocaleLowerCase().includes(query)).map((res) => (
+            <Col xs="6" sm="4" style={{ padding: 5 }} key={res.id}>
+              <Card style={{ margin: "10px 10px" }}>
                 <CardImg
                   top={true}
                   style={{ height: 250 }}
                   src={`${process.env.NEXT_PUBLIC_API_URL}${res.image.url}`}
                 />
                 <CardBody>
-                  <CardTitle>{res.name}</CardTitle>
-                  <CardText>{res.description}</CardText>
+                  <CardTitle style={{fontWeight: 'bold', color: 'blue'}}>{res.name}</CardTitle>
+                  <CardText style={{fontStyle: 'italic'}}>{res.description}</CardText>
                 </CardBody>
                 <div className="card-footer">
                   <Button

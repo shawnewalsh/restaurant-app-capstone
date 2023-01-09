@@ -51,8 +51,8 @@ function RestaurantList(props) {
                  src={`${process.env.NEXT_PUBLIC_API_URL}${res.image.url}`}
                 />
                 <CardBody>
-                  <CardTitle>{res.name}</CardTitle>
-                  <CardText>{res.description}</CardText>
+                  <CardTitle style={{fontWeight: 'bold', color: 'blue'}}>{res.name}</CardTitle>
+                  <CardText style={{fontStyle: 'italic'}}>{res.description}</CardText>
                 </CardBody>
                 <div className="card-footer">
                   <Link

@@ -60,6 +60,10 @@
     "user_profile": {
       "via": "user",
       "model": "user-profile"
+    },
+    "profile": {
+      "via": "user",
+      "model": "profiles"
     }
   }
 }
