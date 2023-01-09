@@ -141,6 +141,12 @@ const Register = () => {
             background-color: #2196f3;
             margin-bottom: 30px;
             border-radius-top: 6px;
+            @import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Space+Mono:ital@0;1&display=swap');
+            font-family: 'Rubik Bubbles', cursive;
+            font-size: 50px;
+            color: white;
+            text-align: center;
+            padding: 20px 20px;
           }
           .wrapper {
             padding: 10px 30px 20px 30px !important;
