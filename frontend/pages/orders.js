@@ -17,9 +17,9 @@ function Orders() {
      
         <div>
         <OrderList search={userquery}/>
-        </div>
+        </div> 
      
     )
 }
 
-export default Orders;
+export default Orders; 

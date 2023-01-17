@@ -7,7 +7,7 @@ import Link from "next/link";
 import {
     Card,
     CardBody,
-    CardImg,
+    CardImg, 
     CardText,
     CardTitle,
     Row,
