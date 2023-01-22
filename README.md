@@ -18,6 +18,17 @@ Checkout
 
 ### License: MIT
 
+### Roadmap
+
+Add Oauth
+
+Favorite Restaurants
+
+User rate/comment on restaurants and dishes
+
+Add ETA delivery time
+
+
 ### Setup
 
 cd frontend
