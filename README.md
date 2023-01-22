@@ -19,12 +19,18 @@ Checkout
 ### License: MIT
 
 ### Setup
+
 cd frontend
+
 npm install
+
 npm run dev
 
+
 cd backend
+
 npm install
+
 npm run dev
 
 Login to Strapi and create these content types
